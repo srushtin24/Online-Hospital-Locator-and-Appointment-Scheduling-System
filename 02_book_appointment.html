@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="02z_bookapppage_style.css">
+    <link rel="stylesheet" href="01z_homepage_style.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+
+            <!-- mediWay logo -->
+            <div class="nav-logo border">
+                <div class="logo"></div>
+            </div>
+
+            <div class="nav-options">
+                <!-- guides -->
+                <div class="guides">
+                    <div class="home"><a href="01_index.php" class="home">Home</a></div>
+                    <div class="home"><a href="#" class="home">About Us</a></div>
+                    <div class="home"><a href="#" class="home">Contact Us</a></div>
+                    <div class="home"><a href="#" class="home">Help</a></div>
+                </div>
+
+                <!-- book appointment -->
+                <div class="book-app">
+                    <a href="02_book_appointment.html" class="book-app-button">Book Appointment</a>
+                </div>
+
+                <!-- profile -->
+                <div class="profile"></div>
+            </div>
+
+        </div>
+
+        <div class="panel">
+            
+           <!-- text to sign language -->
+           <div class="sign-lang">
+            <a href="06_sign_language.html" class="sign-lang-button">Sign Language</a>
+        </div>
+        
+        <!-- emergency -->
+        <div class="emergency">
+            <a href="#" class="emergency-button">Emergency</a>
+        </div>
+
+        <!-- request callback -->
+        <div class="request-callback">
+            <a href="#" class="request-callback-button">Request Callback</a>
+        </div>
+
+
+        </div>
+    </header>
+
+    
+
+
+    <div class="searchHos">
+
+        <div class="search-opt">
+
+            <div class="dropdown">
+                <!-- Filters -->
+                
+                <select id="city">
+                    <option value="all">Select City</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Pune">Pune</option>
+                    
+                </select>
+
+                
+                <select id="specialist">
+                    <option value="all">Select Specialist</option>
+                    <option value="Ayurvedic">Ayurvedic</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Dental">Dental</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="Diabetology">Diabetology</option>
+                    <option value="ENT">ENT</option>
+                    <option value="Gastroenterology">Gastroenterology</option>
+                    <option value="General Physician">General Physician</option>
+                    <option value="Gynacologist">Gynacologist</option>
+                    <option value="Multispeciality">Multispeciality</option>
+                    <option value="Nephrology">Nephrology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Oncology(Cancer)">Oncology(Cancer)</option>
+                    <option value="Orthopaedics">Orthopaedics</option>
+                    <option value="Paediatrics">Paediatrics</option>
+                    
+                </select>
+            </div>
+            
+            <div class="searchbar">
+                <!-- Search Bar --> 
+                <input type="text" id="search" placeholder="Search for hospitals">
+            </div>
+            
+
+        </div>
+        
+        <div class="hosp-list">
+            <!-- Hospital Listings Container -->
+            <div id="hospital-listings">
+            <!-- Hospital listings will be displayed here -->
+        </div>
+
+    </div>
+
+    <script>
+        // Sample hospital data (replace with your actual data)
+        const hospitals = [
+            // { 
+            //     name: "Hospital A", 
+            //     cities: ["New York", "Los Angeles"], 
+            //     specialists: ["Cardiology", "Orthopaedics"], 
+            //     image: "hospital-a.jpg", 
+            //     description: "Lorem ipsum...", 
+            //     link: "#" 
+            // },
+
+            // { 
+            //     name: "Hospital B", 
+            //     cities: ["Los Angeles"], 
+            //     specialists: ["Orthopaedics"], 
+            //     image: "hospital-b.jpg", 
+            //     description: "Lorem ipsum..." 
+            // },
+            { 
+                name: "Prime Criticare Hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Orthopaedics"], 
+                image: "img/prime criticare-ortho.jpg",
+                description: "Lorem ipsum..."  
+            },
+            { 
+                name: "Apollo Hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Diabetology" , "oncology ","IVF"], 
+                image: "img/Apollo _jpn.jpg",
+                description: "Lorem ipsum..."  
+            },
+            { 
+                name: "Fortis hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Cardiology", "Orthopaedics", "Nerulogy"], 
+                image: "img/fortis-hosp.png" 
+            },
+            { 
+                name: "Mgm New Bombay hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Cardiology", "Orthopaedics", "Neurology"], 
+                image: "img/mgm new bombay.jpg" 
+            },
+            { 
+                name: "Navkaar hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Cardiology", "Nerulogy", "Paediatric"], 
+                image: "img/navkaar hospital.jpg" 
+            },
+            { 
+                name: "Dr Batras hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Nephrology", "Nerulogy","Paediatric"], 
+                image: "img/Dr batras.jpg" 
+            },
+            { 
+                name: "Advanced Centre For Treatment Research & Education In Cancer", 
+                cities: ["Mumbai"], 
+                specialists: ["Oncology(Cancer)"], 
+                image: "img/cancer Kharghar.jpg" 
+            },
+            { 
+                name: "Terna Speciality Hospital & Research Centre", 
+                cities: ["Mumbai"], 
+                specialists: ["Multispeciality", "Oncology(Cancer)"], 
+                image: "img/terna-hosp.jpg",
+                link: "03_terna_speciality_hospital.html" 
+            },
+            { 
+                name: "Apollo Hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Orthopaedics", "Cardiology", "Gastroenterology"], 
+                image: "img/Apollo _jpn.jpg" 
+            },
+            { 
+                name: "Fortis Hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Orthopaedics", "Cardiology", "Gastroenterology", "Diabetology"], 
+                image: "img/Fortis_.jpg" 
+            },
+            { 
+                name: "Pacific Heart & Child Clinic", 
+                cities: ["Mumbai"], 
+                specialists: ["Orthopaedics", "Cardiology", "Neonatology"], 
+                image: "img/pacific-heart-and-child-clinic-kandivali-west-mumbai-paediatricians-zt7fabzqgw.jpg" 
+            },
+            { 
+                name: "Sunflower Pathology Lab & Child Clinic Hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Orthopaedics", "Cardiology", "Neonatology"], 
+                image: "img/sunflower-pathology-lab-and-child-clinic-thane-west-thane-pathology-labs-wx71x7os36.jpg" 
+            },
+            { 
+                name: "Siddhivinayak Multispeciality Hospital & Cardiac Care Center  Hospital", 
+                cities: ["Mumbai"], specialists: ["Cardiology", "Gastroenterology","ENT", "Diabetology"], 
+                image: "img/siddhivnayak.jpeg" 
+            },
+            { 
+                name: "Apex Hospitals", 
+                cities: ["Mumbai"], 
+                specialists: ["Gastroenterology", "ENT", "Diabetology"], 
+                image: "img/apex hospital.webp" 
+            },
+            { 
+                name: "Terna Dental Hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Dental"], 
+                image: "img/terna dental 2.webp" 
+            },
+            { 
+                name: "Mgm Dental Hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Dental"], 
+                image: "img/mgm_dental.jpeg" 
+            },
+            { 
+                name: "Hiims navi mumbai hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["Ayurvedic"], 
+                image: "img/hiim-hosp.jpg" 
+            },
+            { 
+                name: "Jiva Ayurveda Clinic & Panchkarma Center", 
+                cities: ["Mumbai"], specialists: ["Ayurvedic"], 
+                image: "img/jiva ayurveda.png " 
+            },
+            { 
+                name: "Palm Beach Multispeciality Hospital", 
+                cities: ["Mumbai"], 
+                specialists: ["General Physician", "Diabetology"], 
+                image: "img/palm beach general consult.png " 
+            },
+            { 
+                name: "Dr. Nilesh Shankar Shinde (Sai Tej Clinic)", 
+                cities: ["Mumbai"], 
+                specialists: ["General Physician", "Diabetology"], 
+                image: "img/clinic-hosp.jpg" },
+            { 
+                name: "ORCHID MULTISPECIALITY HOSPITAL", 
+                cities: ["Mumbai"], 
+                specialists: ["Dermatology"], 
+                image: "img/orchid.jpg" },
+            { 
+                name: "Urban Skin and Hair Clinic", 
+                cities: ["Mumbai"], 
+                specialists: ["Dermatology"], 
+                image: "img/urban skin and hair.jpg"
+            },
+
+            // pune 
+
+            { 
+                name: "SANCHETI Hospital", 
+                cities: ["Pune"], 
+                specialists: ["Cardiology", "Orthopedics", "Nerulogy"], 
+                image: "img/sancheti-hospital.jpg",
+                description: "Lorem ipsum...", 
+
+
+            },
+            {
+                name: "Lokmanya Hospital",
+                cities: ["Pune"], 
+                specialists: ["Orthopedic"],
+                image: "img/Lokmanya hospital.png",
+                description: "Lorem ipsum...", 
+                
+            },
+            { 
+                name: "KEM diabetes unit",
+                cities: ["Pune"], 
+                specialists: ["Diabatology"],
+                image: "KEM-Hospital.png",
+                description: "Lorem ipsum...", 
+
+            },
+            { 
+                name: "Dr. Gaikwad Diabetes center",
+                cities: ["Pune"], 
+                specialists: ["Diabatology"],
+                image: "hospital-img-Dr. Gaikwad.jpg",
+                description: "Lorem ipsum...",         
+            },
+            { 
+                name: "Sahyadri Super Specialty Hospital,  Deccan Gymkhana,  pune",
+                cities: ["Pune"],
+                specialists: ["Neurology"],
+                image: "img/sahyadri-hospital-pune.jpg",
+                description: "Lorem ipsum...",           
+            },
+            {
+                name: "Suhurd Cardiology",
+                cities: ["Pune"],
+                specialists: ["Cardiology"], 
+                image: "img/suhrud-clinic-parvati-pune-cardiac-hospitals-4ys00yjsty.jpg",
+                description: "Lorem ipsum...",            
+            },
+            { 
+                name:"Rubey Hall ClinicMultispecialityHospitalSasson", 
+                cities: ["Pune"], 
+                specialists: ["Cardiology","Gynaecologist","Oncology(Cancer)"],
+                image: "img/Ruby Hall Clinic.jpg",
+                description: "Lorem ipsum...", 
+            },
+            {
+                name:  "Dr Devayani's Clinic : ENT Specialist", 
+                cities: ["Pune"],
+                specialists: ["ENT"],
+                image: "img/Dr. Devyani ENT.jpg", 
+                description: "Lorem ipsum...", 
+            
+             },
+            { 
+                name: "Dr. Poorva Lunavat",
+                cities: ["Pune"],
+                specialists: ["ENT"],
+                image: "img/Dr. Purwa Lulawat.jpg",
+                description: "Lorem ipsum...", 
+            
+             },
+            {
+                name: "Kidney care",
+                cities: ["Pune"],
+                specialists: ["Nephrology"],
+                image: "img/Kidney care clinic.png",
+                description: "Lorem ipsum...", 
+            
+             },
+            {
+                name: "NeU Clinic",
+                cities: ["Pune"],
+                specialists: ["Nephrology"],
+                image: "img/Neu clinic.jpg",     
+                description: "Lorem ipsum...", 
+            },
+            {
+                name: "RL GASTROCARE", 
+                cities: ["Pune"], 
+                specialists: ["Gastroenterology"],
+                image: "img/RL gastro care.jpg" ,
+                description: "Lorem ipsum...", 
+            
+            },
+            { 
+                name: "Poona Superspeciality Clinic", 
+                cities: ["Pune"],
+                specialists: ["Cardiology","Gastroenterology","Paediatrics"], 
+                image: "img/Poona superspeciality clinic.png",
+                description: "Lorem ipsum...", 
+            
+             },
+            {
+                name: "Clear Skin Clinic", 
+                cities: ["Pune"],
+                specialists: ["Dermatology"],
+                image: "img/Clear Skin Hospital .jpg",
+                description: "Lorem ipsum...", 
+            
+            },
+            {
+                name: "Skin and Surgery International",
+                cities: ["Pune"], specialists: ["Dermatology"], 
+                image: "img/Skin surgery and International .jpg",
+                description: "Lorem ipsum...", 
+            
+            },
+            {
+                name: "Dr. Pradeep Suryawanshi",
+                cities: ["Pune"], 
+                specialists: ["Paediatrics"],
+                image: "img/Dr. Pradeep Suryawanshi.jpg",
+                description: "Lorem ipsum...", 
+            
+            },
+            {
+                name: "KEM Hospital", 
+                cities: ["Pune"], 
+                specialists: ["Paediatrics"], 
+                image: "img/KEM-Hospital.png",
+                description: "Lorem ipsum...", 
+            
+            },
+            {
+                name: "Dr. Puranic cancer Clinic", 
+                cities: ["Pune"], 
+                specialists: ["Oncology(Cancer)"],
+                image: "img/dr-reshma-puranik-best-cancer-specialist-in-pune-breast-cancer-doctor-cancer-treatment-oncologist-in-pune-3844073.webp",
+                description: "Lorem ipsum...", 
+            
+             },
+            {
+                name: "SahyadriSuperSpecialtyHospital", 
+                cities: ["Pune"], 
+                specialists: ["Oncology(Cancer)"],
+                image: "img/sahyadri-hospital-pune.jpg",
+                description: "Lorem ipsum...", 
+            },
+            {
+                name: "Touch of life", 
+                cities: ["Pune"], 
+                specialists: ["Gynacology"], 
+                image: "img/Touch in life.png",
+                description: "Lorem ipsum...", 
+             },
+            { 
+                name: "Dr. Vinod Middha",
+                cities: ["Pune"], 
+                specialists: ["General Physician"],
+                image: "img/Dr. Vinod midha.jpeg",
+                description: "Lorem ipsum...", 
+            },
+            {
+                name: "Nerlekar clinic", 
+                cities: ["Pune"], specialists: ["General Physician"], 
+                image: "img/Narlekar Hospital .jpg",
+                description: "Lorem ipsum...", 
+            },
+            { 
+                name: "Mind aid", 
+                cities: ["Pune"], 
+                specialists: ["Psychology"], 
+                image: "img/Mind aid.png",              
+                description: "Lorem ipsum...", 
+            },
+            { 
+                name: "The beautiful mind", 
+                cities: ["Pune"], 
+                specialists: ["Psychology"], 
+                image: "img/Beautiful mind.png", 
+                description: "Lorem ipsum...", 
+            },
+
+            // delhi 
+
+            { 
+                name: "Sant ParmanandHospital", 
+                cities: ["Delhi"], 
+                specialists: ["Cardiology", "Orthopaedics"], 
+                image: "img/Sant Parmanand Hospital .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "OrthojunctionHospital", 
+                cities: ["Delhi"], 
+                specialists: ["Cardiology", "Orthopaedics"], 
+                image: "img/Orthojunction Hospital .jpg", 
+                description: "Lorem ipsum..."
+            },
+            { 
+                name: "Apollo Sugar Clinic", 
+                cities: ["Delhi"], 
+                specialists: ["Diabatology"], 
+                image: "img/Apollo  Sugar Clinic .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "specialists Clinic", 
+                cities: ["Delhi"], 
+                specialists: ["Diabatology"], 
+                image: "img/Specialists clinic Diabetes .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "IBS Hospital", 
+                cities: ["Delhi"], 
+                specialists: ["Neurology"], 
+                image: "img/IBS-Hospital.jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Narayana clinic", 
+                cities: ["Delhi"], 
+                specialists: ["Neurology", "ENT", "Gastroenterology"], 
+                image: "img/dharmshila-1.jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Lyfboat", 
+                cities: ["Delhi"], 
+                specialists: ["Cardiology", "Orthopaedics"], 
+                image: "img/Lyfboat .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Fortis Escorts Heart Institute", 
+                cities: ["Delhi", "Mumbai"], 
+                specialists: ["Cardiology"], 
+                image: "img/fortis_escorts.jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Ayu Health Hospital", 
+                cities: ["Delhi"], 
+                specialists: ["ENT"], 
+                image: "img/Ayu Health care .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Delhi Urology Hospital", 
+                cities: ["Delhi"], 
+                specialists: ["Nephrology"], 
+                image: "img/Urology  Hospital .webp", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Kidney care centre", 
+                cities: ["Delhi"], 
+                specialists: ["Nephrology"], 
+                image: "img/Kidney  care.jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Gastron", 
+                cities: ["Delhi"], 
+                specialists: ["Gastroenterology"], 
+                image: "img/Gastron hospital.jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Dadu Medical Centre", 
+                cities: ["Delhi"], 
+                specialists: ["Dermatology"], 
+                image: "img/dadu-medical-centre-vasant-vihar-delhi.jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "The National Skin Centre", 
+                cities: ["Delhi"], 
+                specialists: ["Dermatology"], 
+                image: "img/National Skin Centre .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Apollo Cradle Maternity & Children's Hospital", 
+                cities: ["Delhi"], 
+                specialists: ["Paediatrics"], 
+                image: "img/Apollo Cradle Maternity .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Manipal Hospital", 
+                cities: ["Delhi"], 
+                specialists: ["Paediatrics"], 
+                image: "img/Manipal hospital .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Dharamshila Cancer Foundation And Research Centre", 
+                cities: ["Delhi"], 
+                specialists: ["Oncology(Cancer)"], 
+                image: "img/dharmshila-1.jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Metro Hospital & Cancer Institute", 
+                cities: ["Delhi"], 
+                specialists: ["Oncology(Cancer)"], 
+                image: "img/Metro Hospital and cancer Institute .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Motherhood Hospital", 
+                cities: ["Delhi"], 
+                specialists: ["Gynacology"], 
+                image: "img/Motherhood  Hospital .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Dr. Mita verma", 
+                cities: ["Delhi"], 
+                specialists: ["Gynacology"], 
+                image: "img/Dr. Mita verma.jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "World Brain Center Hospital", 
+                cities: ["Delhi"], 
+                specialists: ["Psychology"], 
+                image: "img/World Brain Center Hospital .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+            { 
+                name: "Cosmos Institute of Mental Health & Behavioural Sciences- Delhi Psychiatry Centre CIMBS", 
+                cities: ["Delhi"], 
+                specialists: ["Psychology"], 
+                image: "img/Cosmos  Hospital .jpg", 
+                description: "Lorem ipsum..."
+            
+            },
+
+            { 
+                name: "Neuro Life Hospital", 
+                cities: ["Chennai"], 
+                specialists: ["Cardiology", "Orthopedics"], 
+                image: "img/neuroortho.jpg",
+                description: "Lorem ipsum...", 
+
+
+            },
+            {
+                name: "Dr Lenin's Orthoinde Hospital",
+                cities: ["Chennai"], 
+                specialists: ["Cardiology"],
+                image: "img/Dr leneis ortho.png",
+                description: "Lorem ipsum...", 
+
+            },
+            { 
+                name: "Neuro Life Hospital",
+                cities: ["Chennai"], 
+                specialists: ["Cardiology","Nerulogy"],
+                image: "img/neuroortho.jpg",
+                description: "Lorem ipsum...", 
+
+            },
+            { 
+                name: "Sri Sudharsanam Hospital Pvt Ltd",
+                cities: ["Chennai"],
+                specialists: ["Cardiology","Nerulogy"],
+                image: "img/sri-sudharsanam-hospital-chennai-1456914248-56d6bf48499a0.jpg",
+                description: "Lorem ipsum...", 
+
+
+            },
+            {
+                name: "Deepam Medfirst Hospitall",
+                cities: ["Chennai"],
+                specialists: ["Cardiology"], 
+                image: "img/deepam-chn.png",
+                description: "Lorem ipsum...",
+            },
+            { 
+                name:  "Sims Hospital", 
+                cities: ["Chennai"], 
+                specialists: ["Cardiology","Gynaecologist","Cancer"],
+                image: "img/sims-hospital-vadapalani-chennai-dermatologists-15nsg07.jpg",
+                description: "Lorem ipsum...", 
+            },
+            {
+                name:  "Prashanth Superspeciality Hospital", 
+                cities: ["Chennai"],
+                specialists: ["Cardiology","Gynaecologist","Cancer", "Nephrology"],
+                image: "img/prashnath hospital nephro.png",
+                description: "Lorem ipsum...", 
+            
+            },
+            { 
+                name: "Annai Arul Hospital",
+                cities: ["Chennai"],
+                specialists: ["Cardiology","Gastroenterology"],
+                image: "annai nephro.jpg",
+                description: "Lorem ipsum...", 
+            
+            },
+            {
+                name: "Sri Padmapriya Hospital Pvt Ltd",
+                cities: ["Chennai"],
+                specialists: ["Cardiology","Gastroenterology"],
+                image: "img/sri-padmapriya-hospital-pvt-ltd-adyar-chennai-paediatricians-zbq4lty8ap.jpg",
+                description: "Lorem ipsum...", 
+            
+            },
+            {
+                name: "Fortis Malar Hospital",
+                cities: ["Chennai"],
+                specialists: ["Cardiology","Gastroenterology","Diabetes"],
+                image: "img/Fortis malar.png" ,         
+                description: "Lorem ipsum...", 
+            
+             },
+            {
+                name: "Dr Fathima S A Dermatologist and Cosmetologist (Al-Safa Polyclinic)", 
+                cities: ["Chennai"], specialists: ["Cardiology","Gastroenterology","Diabetes","Dermatologist"],
+                image: "img/dr-fathima-s-a-dermatologist-and-cosmetologist-al-safa-polyclinic-chepauk-chennai-general-physician-doctors-p8r466hyh6.jpg" ,
+                description: "Lorem ipsum...", 
+            
+            },
+            { 
+                name: "Kanaga Hospital", 
+                cities: ["Chennai"],
+                specialists: ["Cardiology","Gastroenterology","Paediatrics"], 
+                image: "img/kanaga-hospital-kovur-chennai-multispeciality-hospitals-dz2ra6kom1.jpg",
+                description: "Lorem ipsum...", 
+            
+             },
+            {
+                name: "Pallava Hospital", 
+                cities: ["Chennai"],
+                specialists: ["Cardiology",,"Paediatrics"],
+                image: "img/pallava-hospital-chennai-1454473164-56b17fcc892b5.jpg",
+                description: "Lorem ipsum...", 
+            
+             },
+            {
+                name: "Dr. Lavanyas Dental Clinic",
+                cities: ["Chennai"], 
+                specialists: ["Dental"], 
+                image: "img/lavanya-dental-clinic-madhapur-hyderabad-dentists-pyrhzndpjp.jpg",
+                description: "Lorem ipsum...", 
+            
+             },
+            {
+                name: "Aarthi Priyas Tooth Care Clinic",
+                cities: ["Chennai"], 
+                specialists: ["Dental"],
+                image: "img/aarthi-priyas-tooth-care-clinic-velacheri-chennai-dentists-xwyu171zgw.jpg",
+                description: "Lorem ipsum...", 
+            
+            },
+            {
+                name: "DR GEETHA HARIPRIYA PRASHANTH FERTILITY GYNAECOLOGIST CHETPET", 
+                cities: ["Chennai"], 
+                specialists: ["Gynaecologist"], 
+                image: "img/dr-geetha-haripriya-c-prashanth-fertility-research-center--chetpet-chennai-infertility-doctors-0pd8ggwha9.jpg",
+                description: "Lorem ipsum...", 
+            
+            },
+            {
+                name: "V S Hospital", 
+                cities: ["Chennai"], 
+                specialists: ["Oncology(Cancer)"],
+                image: "img/vs-hospitals-advanced-cancer-care-chennai-5f75ba7e0e0b0.jpg",
+                description: "Lorem ipsum...", 
+            
+            },
+            {
+                name: "Ayur Gramam Kerala Ayurvedic Health Village", 
+                cities: ["Chennai"], 
+                specialists: ["Ayurveda"],
+                image: "img/ayur-gramam-kerala-ayurvedic-health-village-sholinganallur-chennai-ayurvedic-clinics-pp4bcz1wfc.jpg",
+                description: "Lorem ipsum...", 
+            },
+            {
+                name: "Mr Tulasiraman", 
+                cities: ["Chennai"], 
+                specialists: ["Ayurveda"], 
+                image: "img/",
+                description: "Lorem ipsum...", 
+            },
+            { 
+                name: "S K Family Health Care Clinic",
+                cities: ["Chennai"], 
+                specialists: ["General Physician"],
+                image: "img/s-k-family-clinic-diagnostic-centre-vadapalani-chennai-general-physician-doctors-r0o10.jpg",
+                description: "Lorem ipsum...", 
+            },
+            {
+                name: "Global Hearing Aid Centre Pvt Ltd", 
+                cities: ["Chennai"], 
+                specialists: ["General Physician"], 
+                image: "img/",
+                description: "Lorem ipsum...", 
+            },
+            { 
+                name: " Christudas Orthopaedic Multispeciality Hospital ", 
+                cities: ["Chennai"], 
+                specialists: ["Multispeaciality"], 
+                image: "img/ christudas.jpg", 
+                description: "Lorem ipsum...", 
+            },
+            { 
+                name: "New Life Hospital", 
+                cities: ["Chennai"], 
+                specialists: ["Multispeaciality"], 
+                image: "img/New hospital.jpg",
+                description: "Lorem ipsum...", 
+            },   
+        ];
+
+        // Function to display hospitals in the container
+        function displayHospitals(hospitalsToDisplay) {
+            const hospitalListings = document.getElementById("hospital-listings");
+            hospitalListings.innerHTML = "";
+
+            if (hospitalsToDisplay.length === 0) {
+                hospitalListings.textContent = "No hospitals found.";
+            } else {
+                hospitalsToDisplay.forEach(hospital => {
+                    // Create a clickable anchor element with the link from the hospital object
+                    const hospitalLink = document.createElement("a");
+                    hospitalLink.href = hospital.link; // Use the link property from the hospital object
+                    hospitalLink.style.textDecoration = "none"; // Remove underline
+                    hospitalLink.style.color = "#333"; // Change link color
+                    hospitalLink.style.display = "flex";
+
+                    // Create a container for hospital info (including image and details)
+                    const hospitalItem = document.createElement("div");
+                    hospitalItem.classList.add("hospital-item");
+
+                    // Add hospital image
+                    const hospitalImage = document.createElement("img");
+                    hospitalImage.classList.add("hospital-image");
+                    hospitalImage.src = hospital.image;
+                    hospitalLink.appendChild(hospitalImage);
+
+                    // Create a container for hospital details
+                    const hospitalDetails = document.createElement("div");
+                    hospitalDetails.classList.add("hospital-details");
+
+                    // Add hospital name
+                    const hospitalName = document.createElement("h2");
+                    hospitalName.textContent = hospital.name;
+                    hospitalDetails.appendChild(hospitalName);
+
+                    // Add city
+                    const hospitalCity = document.createElement("div");
+                    hospitalCity.textContent = `City: ${hospital.cities.join(", ")}`;
+                    hospitalDetails.appendChild(hospitalCity);
+
+                    // Add specialties
+                    const specialistSection = document.createElement("div");
+                    specialistSection.classList.add("hospital-details");
+                    hospital.specialists.forEach(specialist => {
+                        const specialtyBox = document.createElement("span");
+                        specialtyBox.classList.add("specialty-box");
+                        specialtyBox.textContent = specialist;
+                        specialistSection.appendChild(specialtyBox);
+                    });
+                    hospitalDetails.appendChild(specialistSection);
+
+                    // Add description
+                    const hospitalDescription = document.createElement("div");
+                    hospitalDescription.textContent = `Description: ${hospital.description}`;
+                    hospitalDetails.appendChild(hospitalDescription);
+
+                    // Append hospital details to the anchor element
+                    hospitalLink.appendChild(hospitalDetails);
+
+                    // Append the anchor element to the main container
+                    hospitalItem.appendChild(hospitalLink);
+                    hospitalListings.appendChild(hospitalItem);
+                });
+            }
+        }
+
+                // Event listener to trigger filtering when search input changes
+                document.getElementById("search").addEventListener("input", filterHospitals);
+
+                // Event listeners to trigger filtering when drop-downs change
+                document.getElementById("city").addEventListener("change", filterHospitals);
+                document.getElementById("specialist").addEventListener("change", filterHospitals);
+
+                // Function to filter hospitals based on user selections and search query
+                function filterHospitals() {
+                    const cityFilter = document.getElementById("city").value;
+                    const specialistFilter = document.getElementById("specialist").value;
+                    const searchQuery = document.getElementById("search").value.toLowerCase();
+
+                    const filteredHospitals = hospitals.filter(hospital => {
+                        const cityMatch = cityFilter === "all" || hospital.cities.includes(cityFilter);
+                        const specialistMatch = specialistFilter === "all" || hospital.specialists.includes(specialistFilter);
+                        const nameMatch = hospital.name.toLowerCase().includes(searchQuery);
+                        return cityMatch && specialistMatch && nameMatch;
+                    });
+
+                    displayHospitals(filteredHospitals);
+                }
+
+                // Initial display
+                filterHospitals();
+            </script>
+        </body>
+</html>

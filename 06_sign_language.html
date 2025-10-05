@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="02z_bookapppage_style.css">
+    <link rel="stylesheet" href="01z_homepage_style.css">
+    <link rel="stylesheet" href="06z_sign_language.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+
+            <!-- mediWay logo -->
+            <div class="nav-logo border">
+                <div class="logo"></div>
+            </div>
+
+            <div class="nav-options">
+                <!-- guides -->
+                <div class="guides">
+                    <div class="home"><a href="01_index.php" class="home">Home</a></div>
+                    <div class="home"><a href="#" class="home">About Us</a></div>
+                    <div class="home"><a href="#" class="home">Contact Us</a></div>
+                    <div class="home"><a href="#" class="home">Help</a></div>
+                </div>
+
+                <!-- book appointment -->
+                <div class="book-app">
+                    <a href="02_book_appointment.html" class="book-app-button">Book Appointment</a>
+                </div>
+
+                <!-- profile -->
+                <div class="profile"></div>
+            </div>
+
+        </div>
+
+        <div class="panel">
+            
+           <!-- text to sign language -->
+           <div class="sign-lang">
+            <a href="06_sign_language.html" class="sign-lang-button">Sign Language</a>
+        </div>
+        
+        <!-- emergency -->
+        <div class="emergency">
+            <a href="#" class="emergency-button">Emergency</a>
+        </div>
+
+        <!-- request callback -->
+        <div class="request-callback">
+            <a href="#" class="request-callback-button">Request Callback</a>
+        </div>
+
+
+        </div>
+    </header>
+
+    
+    <div class="searchSign">
+        <div class="search-opt">
+            <div class="searchbar">
+                <!-- Search Bar -->
+                <input type="text" id="search" placeholder="Search for Sign">
+            </div>
+        </div>
+    
+        <div class="sign-list" style="display: none;">
+            <!-- Sign Listings Container -->
+            <div id="sign-listings">
+                <!-- Sign listings will be displayed here -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const sign = [
+            
+            { 
+                name: "THANK YOU", 
+                image: "sign_language/thankyou.png"
+            },
+
+            { 
+                name: "WASH", 
+                image: "sign_language/wash.png"
+            },
+
+            { 
+                name: "STOP", 
+                image: "sign_language/stop.png"
+            },
+
+            { 
+                name: "STAND UP", 
+                image: "sign_language/standup.jpg"
+            },
+
+            { 
+                name: "SIT", 
+                image: "sign_language/sit.jpg"
+            },
+
+            { 
+                name: "HELLO", 
+                image: "sign_language/hello.png"
+            },
+
+            { 
+                name: "SORRY", 
+                image: "sign_language/sorry.png"
+            },
+
+            { 
+                name: "YES", 
+                image: "sign_language/yes.png"
+            },
+
+            { 
+                name: "PLEASE", 
+                image: "sign_language/please.png"
+            },
+
+            { 
+                name: "GOODBYE", 
+                image: "sign_language/goodbye.png"
+            },
+
+            { 
+                name: "HAPPY", 
+                image: "sign_language/happy.png"
+            },
+
+            { 
+                name: "EXCITED", 
+                image: "sign_language/excited.png"
+            },
+
+            { 
+                name: "LAUGH", 
+                image: "sign_language/laugh.png"
+            },
+
+            { 
+                name: "COLD", 
+                image: "sign_language/cold.png"
+            },
+
+            { 
+                name: "SAD", 
+                image: "sign_language/sad.png"
+            },
+
+            { 
+                name: "NOW", 
+                image: "sign_language/now.jpg"
+            },
+
+            { 
+                name: "NO", 
+                image: "sign_language/no.png"
+            },
+
+            { 
+                name: "MORE", 
+                image: "sign_language/more.jpg"
+            },
+
+            { 
+                name: "HELP", 
+                image: "sign_language/help.png"
+            },
+
+            { 
+                name: "ALL DONE", 
+                image: "sign_language/alldone.png"
+            },
+
+            
+        ];
+    
+        function displaySign(signToDisplay) {
+            const signListings = document.getElementById("sign-listings");
+            signListings.innerHTML = "";
+    
+            if (signToDisplay.length === 0) {
+                signListings.textContent = "No sign found.";
+            } else {
+                signToDisplay.forEach(sign => {
+                    const signItem = document.createElement("div");
+                    signItem.classList.add("sign-item");
+    
+                    const signImage = document.createElement("img");
+                    signImage.classList.add("sign-image");
+                    signImage.src = sign.image;
+                    signItem.appendChild(signImage);
+    
+                    const signName = document.createElement("h2");
+                    signName.textContent = sign.name;
+                    signItem.appendChild(signName);
+    
+                    signListings.appendChild(signItem);
+                });
+            }
+    
+            // Show the sign list container
+            document.querySelector('.sign-list').style.display = signToDisplay.length > 0 ? 'block' : 'none';
+        }
+    
+        document.getElementById("search").addEventListener("input", filterSign);
+    
+        function filterSign() {
+            const searchQuery = document.getElementById("search").value.toLowerCase();
+    
+            const filteredSign = sign.filter(sign => {
+                const nameMatch = sign.name.toLowerCase().includes(searchQuery);
+                return nameMatch;
+            });
+    
+            displaySign(filteredSign);
+        }
+    </script>
+    
+    </body>
+    </html>

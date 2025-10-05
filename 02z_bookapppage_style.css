@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    font-family: Arial;
+    border: border-box;
+}
+
+/* sorting and searching */
+
+.searchHos{
+    display: inline-block;
+    height: 100%;
+    height: 350px;
+    width: 100%;
+    margin-top: 130px;
+    /* justify-content:flex-start;
+    align-items: flex-start; */
+}
+
+.search-opt{
+    display: flex;
+    /* align-items: center;
+    justify-content: space-evenly;  */
+}
+
+.searchbar{
+    margin-left: 280px;
+}
+
+input{
+    height: 45px;
+    width: 450px;
+}
+
+#city{
+    height: 45px;
+    width: 300px;
+    border-radius: 100px;
+}
+
+#specialist{
+    height: 45px;
+    width: 300px;
+    border-radius: 100px;
+}
+
+
+
+.hospital-item {
+    display: flex;
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    height: 150px;
+}
+.hospital-image {
+    
+    max-width: 200px;
+    max-height: 200px;
+    margin-right: 20px;
+}
+.hospital-details {
+    flex: 1;
+    /* justify-content: center;
+    align-items: center; */
+}
+.specialty-box {
+    display: inline-block;
+    background-color: #c1fba4;
+    color: green;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 1px solid #c1fba4;
+}
