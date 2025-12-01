@@ -3,44 +3,47 @@
 ***Web Application | HTML, CSS, JavaScript, PHP, MySQL***
 
 - Designed and implemented an Online Hospital Locator and Appointment Scheduling System, leveraging HTML, CSS, JavaScript, PHP, and MySQL.
-- The system streamlines hospital discovery near you, appointment booking, and location access for users.
+- The system streamlines hospital discovery near you, appointment booking, and location access for users.<br><br>
 
-### Sign up & Sign in
+### 1] Sign up & Sign in
 
 <p align="center">
-   <img src="/images/1.png" width="550">  
+   <img src="/images/1.png" width="500">  
 </p>
 
 <p align="center">
-   <img src="/images/2.png" width="550">  
+   <img src="/images/2.png" width="500">  
 </p>
 
 
-### Home Page and search options
+### 2] Home Page and search options
 
 <p align="center">
-   <img src="/images/3.jpg" width="550">  
+   <img src="/images/3.jpg" width="700">  
 </p>
 
 <p align="center">
-   <img src="/images/4.jpg" width="550">  
+   <img src="/images/4.jpg" width="700">  
 </p>
 
 <p align="center">
-   <img src="/images/5.jpg" width="550">  
+   <img src="/images/5.jpg" width="700">  
 </p>
 
 <p align="center">
-   <img src="/images/6.jpg" width="550">  
+   <img src="/images/6.jpg" width="700">  
 </p>
 
 
-### Appointment Booking
+### 3] Appointment Booking
 
 <p align="center">
-   <img src="/images/7.png" width="550">  
+   <img src="/images/7.png" width="500">  
 </p>
 
+
+### 4] Backend
+
 <p align="center">
-   <img src="/images/8.jpg" width="550">  
+   <img src="/images/8.jpg" width="700">  
 </p>
