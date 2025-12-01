@@ -14,19 +14,19 @@
 </p>
 
 <p align="center">
-   <img src="/images/3.png" width="550">  
+   <img src="/images/3.jpg" width="550">  
 </p>
 
 <p align="center">
-   <img src="/images/4.png" width="550">  
+   <img src="/images/4.jpg" width="550">  
 </p>
 
 <p align="center">
-   <img src="/images/5.png" width="550">  
+   <img src="/images/5.jpg" width="550">  
 </p>
 
 <p align="center">
-   <img src="/images/6.png" width="550">  
+   <img src="/images/6.jpg" width="550">  
 </p>
 
 <p align="center">
@@ -34,5 +34,5 @@
 </p>
 
 <p align="center">
-   <img src="/images/8.png" width="550">  
+   <img src="/images/8.jpg" width="550">  
 </p>
